@@ -4,6 +4,7 @@ global _reverse
 
 _reverse:
         push    rbp
+		push	rsp
         mov     rbp, rsp
         sub     rsp, 16
         mov     QWORD  [rbp-8], rdi
@@ -40,6 +41,7 @@ _reverse:
         mov     rdi, rax
         call    _reverse
 .L3:
-        nop
-        leave
+        mov rsp, rbp
+        POP rsp
+		POP rbp
         ret
